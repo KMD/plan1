@@ -1,0 +1,39 @@
+body {
+	font-family: sans-serif;
+}
+a, a:visited{
+	color: blue;
+}
+ul.task-list {
+	list-style-type: none;
+}
+li:nth-child(odd){
+	background-color: #eef;
+}
+span.task-id {
+	font-weight: Bold;
+}
+span.task-title {
+	display: inline-block;
+	width: 500px;
+}
+span.task-status{
+	font-weight: Bold;
+	display: inline-block;
+	width: 150px;
+}
+span.status-todo{
+	color: red;
+}
+span.status-inprogress{
+	color: blue;
+}
+span.status-done{
+	color: green;
+}
+span.status-testing{
+	color: orange;
+}
+span.status-feedback{
+	color: grey;
+}
