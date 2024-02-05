@@ -1,9 +1,6 @@
 <?php
 
-$conn = new PDO("mysql:host=".HOST.";dbname=".DBNAME."", USERNAME, PASSWORD);
-$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-class Task {
+class Task extends DBConnector{
 	public $id;
 	public $title;
 	public $description;
@@ -27,15 +24,14 @@ class Task {
 		$this->status_css = $this->statuses[$this->status];
 		
 		
-	} 
-}
-
-function getAllTasks(){
-	global $conn;
-	$sql = "SELECT `task`.`id`, title, status, name AS user FROM `task` JOIN `user` ON `task`.`user_id` = `user`.`id`";
-	$tasks = [];
-	foreach ($conn->query($sql) as $row){
-		$tasks[] = new Task($row['id'], $row['title'], "", $row['status'], $row['user']);
 	}
-	return $tasks;
+	public static function getAllTasks(){
+		$conn = parent::connect();
+		$sql = "SELECT `task`.`id`, title, status, name AS user FROM `task` JOIN `user` ON `task`.`user_id` = `user`.`id`";
+		$tasks = [];
+		foreach ($conn->query($sql) as $row){
+			$tasks[] = new Task($row['id'], $row['title'], "", $row['status'], $row['user']);
+		}
+		return $tasks;
+	}
 }

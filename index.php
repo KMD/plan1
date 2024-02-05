@@ -1,6 +1,6 @@
 <?php include '__config.php'; ?>
 <?php include 'models/task.class.php'; ?>
-<?php  $tasks = getAllTasks(); ?>
+<?php  $tasks = Task::getAllTasks(); ?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
