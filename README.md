@@ -1,5 +1,7 @@
 # Plan 1
 
+`version 0.1` (don't try to use it, is not even close to ready)
+
 This is a task management system designed for [asynchronous work](https://asyncmanifesto.org). Its biggest advantages are:
 
 1. It's incredibly simple, utilizing only HTML, CSS, PHP, and MySQL.
