@@ -1,3 +1,6 @@
+<?php include '__config.php'; ?>
+<?php include 'models/task.class.php'; ?>
+<?php  $tasks = getAllTasks(); ?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -27,36 +30,14 @@
 			<hr/>
 			<a href="#"> Add new task </a>
 			<ul class="task-list">
+				<?php foreach($tasks as $task): ?>
 				<li>
-					<span class="task-id">1</span>
-					<span class="task-title"><a href="task.php">Convert to something else</a></span>
-					<span class="task-status status-todo">TODO</span>
-					<span class="task-assing">Krzysztof Dzienis</span>
+					<span class="task-id"><?= $task->id ?></span>
+					<span class="task-title"><a href="task.php"><?= $task->title ?></a></span>
+					<span class="task-status <?= $task->status_css ?>"><?= $task->status ?></span>
+					<span class="task-assing"><?= $task->user ?></span>
 				</li>
-				<li>
-					<span class="task-id">2</span>
-					<span class="task-title"><a href="task.php">Fix for future versions</a></span>
-					<span class="task-status status-inprogress">IN PROGRES</span>
-					<span class="task-assing">Krzysztof Dzienis</span>
-				</li>
-				<li>
-					<span class="task-id">3</span>
-					<span class="task-title"><a href="task.php">12345678901234567890123456789012345678901234567890</a></span>
-					<span class="task-status status-done">DONE</span>
-					<span class="task-assing">Krzysztof Dzienis</span>
-				</li>
-				<li>
-					<span class="task-id">4</span>
-					<span class="task-title"><a href="task.php">Refactor stupid ideas</a></span>
-					<span class="task-status status-testing">TESTING</span>
-					<span class="task-assing">Krzysztof Dzienis</span>
-				</li>
-				<li>
-					<span class="task-id">5</span>
-					<span class="task-title"><a href="task.php">Crate development environment</a></span>
-					<span class="task-status status-feedback">FEEDBACK</span>
-					<span class="task-assing">Krzysztof Dzienis</span>
-				</li>
+				<?php endforeach; ?>
 			</ul>
 			<a href="#"> Add new task </a>
 			<hr/>
