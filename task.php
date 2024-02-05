@@ -9,9 +9,8 @@
 		<link rel="icon" href="./favicon.ico" type="image/x-icon">
 	</head>
 	<body>
+		<?php include '_menu.php'; ?>
 		<main>
-			<a href="index.html">Main page</a>
-			<hr/>
 			<a href="#">Edit</a>
 			<h1> Create not important changes <span class="status-todo">TODO</span> (<a href="#">Krzysztof Dzienis</a>)</h1>
 			

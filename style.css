@@ -4,10 +4,17 @@ body {
 a, a:visited{
 	color: blue;
 }
+menu {
+	list-style-type: none;
+}
+menu > li {
+	display: inline-block;
+	margin: 4px;
+}
 ul.task-list {
 	list-style-type: none;
 }
-li:nth-child(odd){
+ul.task-list > li:nth-child(odd){
 	background-color: #eef;
 }
 span.task-id {

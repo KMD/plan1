@@ -9,6 +9,7 @@
 		<link rel="icon" href="./favicon.ico" type="image/x-icon">
 	</head>
 	<body>
+		<?php include '_menu.php'; ?>
 		<main>
 			<form method="GET" action="#">
 				<input type="checkbox" name="status-todo-filter" value=1/>
@@ -28,31 +29,31 @@
 			<ul class="task-list">
 				<li>
 					<span class="task-id">1</span>
-					<span class="task-title"><a href="task.html">Convert to something else</a></span>
+					<span class="task-title"><a href="task.php">Convert to something else</a></span>
 					<span class="task-status status-todo">TODO</span>
 					<span class="task-assing">Krzysztof Dzienis</span>
 				</li>
 				<li>
 					<span class="task-id">2</span>
-					<span class="task-title"><a href="task.html">Fix for future versions</a></span>
+					<span class="task-title"><a href="task.php">Fix for future versions</a></span>
 					<span class="task-status status-inprogress">IN PROGRES</span>
 					<span class="task-assing">Krzysztof Dzienis</span>
 				</li>
 				<li>
 					<span class="task-id">3</span>
-					<span class="task-title"><a href="task.html">12345678901234567890123456789012345678901234567890</a></span>
+					<span class="task-title"><a href="task.php">12345678901234567890123456789012345678901234567890</a></span>
 					<span class="task-status status-done">DONE</span>
 					<span class="task-assing">Krzysztof Dzienis</span>
 				</li>
 				<li>
 					<span class="task-id">4</span>
-					<span class="task-title"><a href="task.html">Refactor stupid ideas</a></span>
+					<span class="task-title"><a href="task.php">Refactor stupid ideas</a></span>
 					<span class="task-status status-testing">TESTING</span>
 					<span class="task-assing">Krzysztof Dzienis</span>
 				</li>
 				<li>
 					<span class="task-id">5</span>
-					<span class="task-title"><a href="task.html">Crate development environment</a></span>
+					<span class="task-title"><a href="task.php">Crate development environment</a></span>
 					<span class="task-status status-feedback">FEEDBACK</span>
 					<span class="task-assing">Krzysztof Dzienis</span>
 				</li>
