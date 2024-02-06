@@ -44,3 +44,11 @@ span.status-testing{
 span.status-feedback{
 	color: grey;
 }
+input#title{
+        font-size:24px;
+        width: 900px;
+}
+textarea{
+    width: 900px;
+    height: 450px;
+}

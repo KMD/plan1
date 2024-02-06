@@ -1,5 +1,5 @@
 <?php include '__config.php'; ?>
-<?php include 'models/task.class.php'; ?>
+<?php include 'models/Task.php'; ?>
 <?php 
 $id = filter_input(INPUT_GET, "id", FILTER_VALIDATE_INT);
 $task = Task::getTask($id);
@@ -17,7 +17,7 @@ $task = Task::getTask($id);
 	<body>
 		<?php include '_menu.php'; ?>
 		<main>
-			<a href="#">Edit</a>
+			<a href="task_edit.php?id=<?= $task->id ?>">Edit</a>
 			<h1> <?= $task->title ?> <span class="<?= $task->status_css ?>"><?= $task->status ?></span> (<?= $task->user ?>)</h1>
 			
 			<p><?= $task->description ?></p>
