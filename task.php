@@ -1,3 +1,9 @@
+<?php include '__config.php'; ?>
+<?php include 'models/task.class.php'; ?>
+<?php 
+$id = filter_input(INPUT_GET, "id", FILTER_VALIDATE_INT);
+$task = Task::getTask($id);
+?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -12,9 +18,9 @@
 		<?php include '_menu.php'; ?>
 		<main>
 			<a href="#">Edit</a>
-			<h1> Create not important changes <span class="status-todo">TODO</span> (<a href="#">Krzysztof Dzienis</a>)</h1>
+			<h1> <?= $task->title ?> <span class="<?= $task->status_css ?>"><?= $task->status ?></span> (<?= $task->user ?>)</h1>
 			
-			<p> Lorem ipsum dolor sit umet. At vero eos et accusamus et iusto odio dignissimos ducimus, qui blanditiis praesentium voluptatum deleniti atque corrupti, quos dolores et quas molestias excepturi sint, obcaecati cupiditate non provident, similique sunt in culpa, qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem reru[d]um facilis est e[r]t expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio, cumque nihil impedit, quo minus id, quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellend[a]us. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet, ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat</p>
+			<p><?= $task->description ?></p>
 			<hr/>
 			<a href="#">Add Comment</a>
 		</main>

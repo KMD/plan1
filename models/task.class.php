@@ -36,9 +36,10 @@ class Task extends DBConnector{
 	}
         public static function getTask(int $id) {
             $conn = parent::connect();
-            $sql = "SELECT `task`.`id`, title, status, name AS user "
-                    . "FROM `task` JOIN `user` ON `task`.`user_id` = `user`.`id` "
-                    . "WHERE `task`.id = $id";
-            
+            $sql = "SELECT `task`.`id`, title, description, status, name AS user FROM `task` JOIN `user` ON `task`.`user_id` = `user`.`id` WHERE `task`.id = :id";
+            $sth = $conn->prepare($sql);
+            $sth->execute(["id" => $id]);
+            $row = $sth->fetch();
+            return new Task($row['id'], $row['title'], $row['description'], $row['status'], $row['user']);
         }
 }

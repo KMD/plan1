@@ -33,7 +33,7 @@
 				<?php foreach($tasks as $task): ?>
 				<li>
 					<span class="task-id"><?= $task->id ?></span>
-					<span class="task-title"><a href="task.php"><?= $task->title ?></a></span>
+					<span class="task-title"><a href="task.php?id=<?= $task->id ?>"><?= $task->title ?></a></span>
 					<span class="task-status <?= $task->status_css ?>"><?= $task->status ?></span>
 					<span class="task-assing"><?= $task->user ?></span>
 				</li>
