@@ -45,4 +45,10 @@ class Task extends DBConnector{
             $row = $sth->fetch();
             return new Task($row['id'], $row['title'], $row['description'], $row['status'], $row['user'], $row['user_id']);
         }
+        public static function updateTask(int $id, string $title, string $status, string $description, int $user_id) {
+            $conn = parent::connect();
+            $sql = "UPDATE task SET title = :title, status = :status, description = :description, user_id = :user_id WHERE id = :id";
+            $sth = $conn->prepare($sql);
+            $sth->execute(["id" => $id, "title" => $title, "status" => $status, "description" => $description, "user_id" => $user_id]);
+        }
 }

@@ -7,6 +7,17 @@ $task = Task::getTask($id);
 $statuses = Task::getStatuses();
 $users = User::getAllUsers();
 ?>
+<?php
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $id = filter_input(INPUT_POST, "id", FILTER_VALIDATE_INT);
+    $title = filter_input(INPUT_POST, "title");
+    $status = filter_input(INPUT_POST, "status");
+    $user_id = filter_input(INPUT_POST, "user", FILTER_VALIDATE_INT);
+    $description = filter_input(INPUT_POST, "description");
+    Task::updateTask($id, $title, $status, $description, $user_id);
+    header("Location: http://localhost/plan1/task.php?id=3");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -21,6 +32,7 @@ $users = User::getAllUsers();
 		<?php include '_menu.php'; ?>
 		<main>
                     <form method="POST">
+                        <input type="hidden" id="id" name="id" value="<?= $task->id ?>" />
                         <label for="title">Title:</label><br/>
                         <input type="text" id="title" name="title" value="<?= $task->title ?>">
                         <br/>
