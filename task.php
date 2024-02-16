@@ -18,6 +18,7 @@ $task = Task::getTask($id);
 		<?php include '_menu.php'; ?>
 		<main>
 			<a href="task_edit.php?id=<?= $task->id ?>">Edit</a>
+			<a href="task_delete.php?id=<?= $task->id ?>" class="denger" >Delete</a>
 			<h1> <?= $task->title ?> <span class="<?= $task->status_css ?>"><?= $task->status ?></span> (<?= $task->user ?>)</h1>
 			
 			<p><?= $task->description ?></p>

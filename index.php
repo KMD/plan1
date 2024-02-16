@@ -28,7 +28,7 @@
 				<button type="submit">Filter</button>
 			</form>
 			<hr/>
-			<a href="#"> Add new task </a>
+			<a href="task_add.php"> Add new task </a>
 			<ul class="task-list">
 				<?php foreach($tasks as $task): ?>
 				<li>
@@ -36,10 +36,11 @@
 					<span class="task-title"><a href="task.php?id=<?= $task->id ?>"><?= $task->title ?></a></span>
 					<span class="task-status <?= $task->status_css ?>"><?= $task->status ?></span>
 					<span class="task-assing"><?= $task->user ?></span>
+					<span class="task-edit"><a href="task_edit.php?id=<?= $task->id ?>">Edit</a> | <a href="task_delete.php?id=<?= $task->id ?>" class="denger">Delete</a>
 				</li>
 				<?php endforeach; ?>
 			</ul>
-			<a href="#"> Add new task </a>
+			<a href="task_add.php"> Add new task </a>
 			<hr/>
 		</main>
 		<script src="index.js"></script>

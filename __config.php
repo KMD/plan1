@@ -1,6 +1,7 @@
 <?php
 
 ini_set('display_errors', '1');
+define("DOMAIN", "http://localhost/plan1");
 
 // Database connection
 

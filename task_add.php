@@ -2,23 +2,17 @@
 <?php include 'models/Task.php'; ?>
 <?php include 'models/User.php'; ?>
 <?php 
-if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-	$id = filter_input(INPUT_GET, "id", FILTER_VALIDATE_INT);
-	$task = Task::getTask($id);
-	$statuses = Task::getStatuses();
-	$users = User::getAllUsers();
-}
-
+$statuses = Task::getStatuses();
+$users = User::getAllUsers();
 ?>
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-	$id = filter_input(INPUT_POST, "id", FILTER_VALIDATE_INT);
 	$title = filter_input(INPUT_POST, "title");
 	$status = filter_input(INPUT_POST, "status");
 	$user_id = filter_input(INPUT_POST, "user", FILTER_VALIDATE_INT);
 	$description = filter_input(INPUT_POST, "description");
-	Task::updateTask($id, $title, $status, $description, $user_id);
-	header("Location: http://localhost/plan1/task.php?id=$id");
+	$id = Task::createTask($title, $status, $description, $user_id);
+	header("Location: http://localhost/plan1/index.php");
 }
 ?>
 <!DOCTYPE html>
@@ -35,33 +29,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		<?php include '_menu.php'; ?>
 		<main>
                     <form method="POST">
-                        <input type="hidden" id="id" name="id" value="<?= $task->id ?>" />
-                        <label for="title">Title:</label><br/>
-                        <input type="text" id="title" name="title" value="<?= $task->title ?>">
-                        <br/>
-                        
-                        <br/>
-                        <label for="status">Status:</label>
-                        <br/>
-                        <select name="status" id="status">
-                            <?php foreach($statuses as $status): ?>
-                            <option <?php echo ($task->status == $status)? "selected": ""; ?>><?= $status ?></option>
-                            <?php endforeach; ?>
-                        </select>
+			<label for="title">Title:</label><br/>
+			<input type="text" id="title" name="title" value="">
+			<br/>
+
+			<br/>
+			<label for="status">Status:</label>
+			<br/>
+			<select name="status" id="status">
+			    <?php foreach($statuses as $status): ?>
+			    <option><?= $status ?></option>
+			    <?php endforeach; ?>
+			</select>
                         <br/>
                         
                         <br/>
                         <label for="user">User:</label><br/>
                         <select name="user" id="user">
                             <?php foreach($users as $user): ?>
-                            <option value="<?= $user->id ?>" <?php echo ($task->user_id == $user->id)? "selected": ""; ?>><?= $user->name ?></option>
+                            <option value="<?= $user->id ?>"><?= $user->name ?></option>
                             <?php endforeach; ?>
                         </select>
                         <br/>
                         
                         <br/>
                         <label for="description">Description:</label><br/>
-                        <textarea name="description" ><?= $task->description ?></textarea>
+                        <textarea name="description" ></textarea>
                         <br/>
                         
                         <br/>

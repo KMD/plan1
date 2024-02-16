@@ -38,17 +38,30 @@ class Task extends DBConnector{
 		return $tasks;
 	}
         public static function getTask(int $id) {
-            $conn = parent::connect();
-            $sql = "SELECT `task`.`id`, title, description, status, user_id, name AS user FROM `task` JOIN `user` ON `task`.`user_id` = `user`.`id` WHERE `task`.id = :id";
-            $sth = $conn->prepare($sql);
-            $sth->execute(["id" => $id]);
-            $row = $sth->fetch();
-            return new Task($row['id'], $row['title'], $row['description'], $row['status'], $row['user'], $row['user_id']);
+		$conn = parent::connect();
+		$sql = "SELECT `task`.`id`, title, description, status, user_id, name AS user FROM `task` JOIN `user` ON `task`.`user_id` = `user`.`id` WHERE `task`.id = :id";
+		$sth = $conn->prepare($sql);
+		$sth->execute(["id" => $id]);
+		$row = $sth->fetch();
+		return new Task($row['id'], $row['title'], $row['description'], $row['status'], $row['user'], $row['user_id']);
         }
         public static function updateTask(int $id, string $title, string $status, string $description, int $user_id) {
-            $conn = parent::connect();
-            $sql = "UPDATE task SET title = :title, status = :status, description = :description, user_id = :user_id WHERE id = :id";
-            $sth = $conn->prepare($sql);
-            $sth->execute(["id" => $id, "title" => $title, "status" => $status, "description" => $description, "user_id" => $user_id]);
+		$conn = parent::connect();
+		$sql = "UPDATE task SET title = :title, status = :status, description = :description, user_id = :user_id WHERE id = :id";
+		$sth = $conn->prepare($sql);
+		$sth->execute(["id" => $id, "title" => $title, "status" => $status, "description" => $description, "user_id" => $user_id]);
         }
+	public static function createTask(string $title, string $status, string $description, int $user_id) {
+		$conn = parent::connect();
+		$sql = "INSERT INTO task (title, status, description, user_id) VALUES (:title, :status, :description, :user_id)";
+		$sth = $conn->prepare($sql);
+		$sth->execute(["title" => $title, "status" => $status, "description" => $description, "user_id" => $user_id]);
+		return $conn->lastInsertId();
+	}
+	public static function deleteTask(int $id) {
+		$conn = parent::connect();
+		$sql = "DELETE FROM task WHERE id = :id";
+		$sth = $conn->prepare($sql);
+		$sth->execute(["id" => $id]);
+	}
 }

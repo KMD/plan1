@@ -17,6 +17,10 @@ ul.task-list {
 ul.task-list > li:nth-child(odd){
 	background-color: #eef;
 }
+span.task-id{
+        display: inline-block;
+        width: 50px;
+}
 span.task-id {
 	font-weight: Bold;
 }
@@ -51,4 +55,7 @@ input#title{
 textarea{
     width: 900px;
     height: 450px;
+}
+.denger{
+    color: red;
 }
